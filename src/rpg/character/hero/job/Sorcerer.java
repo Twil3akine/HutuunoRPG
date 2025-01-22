@@ -14,10 +14,10 @@ public class Sorcerer extends AbstractSuperHero {
 
     public boolean special(AbstractParty targets) {
         int randomAttack = new Random().nextInt(attack) + attack;
-        System.out.println(this.getName() + "のファイア！\n相手全体に" + randomAttack + "のダメージを与えた！");
+        System.out.println(this.getName() + "のライトニング！\n相手全体に" + randomAttack + "のダメージを与えた！");
 
         for (AbstractCharacter target: targets.getMembers()) {
-            if (target.isDead()) continue;
+            if (target.isDead() || target.isEscaped()) continue;
 
             int damage = target.getDamage(randomAttack);
             target.actionStatus();

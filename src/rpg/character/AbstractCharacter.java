@@ -31,7 +31,7 @@ public abstract class AbstractCharacter extends Object {
 	}
 	// methods
 	protected abstract void command(AbstractParty allies,
-																										  AbstractParty enemies);
+									AbstractParty enemies);
 	
 	protected abstract AbstractCharacter selectTarget(AbstractParty targets);
 	

@@ -3,6 +3,8 @@ package rpg.checkpoints;
 import rpg.BattleField;
 import rpg.character.hero.Hero;
 import rpg.character.hero.HeroParty;
+import rpg.character.hero.job.Priest;
+import rpg.character.hero.job.Sorcerer;
 import rpg.character.hero.job.Warrior;
 import rpg.character.monster.Monster;
 import rpg.character.monster.MonsterParty;
@@ -15,8 +17,8 @@ public class CheckPoint5Specialized {
 		// 勇者パーティ作成
 		Hero[] heros = {
 				new Warrior("a1"),
-				new Warrior("a2"),
-				new Warrior("a3")
+				new Sorcerer("a2"),
+				new Priest("a3")
 		};
 		HeroParty hpty = new HeroParty(heros);
 
@@ -33,11 +35,11 @@ public class CheckPoint5Specialized {
 		BattleField bf = new BattleField();
 		String result = bf.battle(hpty, mpty);
 		if (result.equals("WIN")) {
-			System.out.println("ヒーローたちは勝利した");
+			System.out.println("ヒーローたちは勝利した\n");
 		} else if (result.equals("LOSE")) {
-			System.out.println("ヒーローたちは敗北した");
+			System.out.println("ヒーローたちは敗北した\n");
 		} else {
-			System.out.println("ヒーローたちは逃げ出した");
+			System.out.println("ヒーローたちは逃げ出した\n");
 		}
 
 		// ヒーローたちを回復
@@ -52,11 +54,11 @@ public class CheckPoint5Specialized {
 		// ボスモンスターとの戦闘
 		String bossBattleResult = bf.battle(hpty, bmpty);
 		if (bossBattleResult.equals("WIN")) {
-			System.out.println("ヒーローたちは勝利した");
+			System.out.println("ヒーローたちは勝利した\n");
 		} else if (bossBattleResult.equals("LOSE")) {
-			System.out.println("ヒーローたちは敗北した");
+			System.out.println("ヒーローたちは敗北した\n");
 		} else {
-			System.out.println("ヒーローたちは逃げ出した");
+			System.out.println("ヒーローたちは逃げ出した\n");
 		}
 	}
 

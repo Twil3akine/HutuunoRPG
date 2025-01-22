@@ -19,7 +19,8 @@ public class Priest extends AbstractSuperHero {
 
             int randomHeal = new Random().nextInt(20) + 10;
 
-            target.setHp(target.getHp() + randomHeal);
+            target.getHeal(randomHeal);
+            System.out.println(target.getName() + "は" + randomHeal + "回復した！");
         }
         return true;
     }
