@@ -62,13 +62,13 @@ public abstract class AbstractCharacter extends Object {
 		}
 		Random random = new Random();
 		int randomDamage = random.nextInt(this.attack) + this.attack;
-		target.gotDamage(randomDamage);
+		target.getDamage(randomDamage);
 		System.out.println(this.name + "の攻撃、" + target.name + "に" + randomDamage + "のダメージ！\n");
 		target.actionStatus();
 		return true;
 	}
 
-  		public int gotDamage(int damage) {
+  		public int getDamage(int damage) {
   			this.hp -= damage;
   			if (this.hp<0) {
   				this.hp = 0;
@@ -76,7 +76,7 @@ public abstract class AbstractCharacter extends Object {
   			return damage;
   		}
 
-  		public int gotHeal(int heal) {
+  		public int getHeal(int heal) {
   			this.hp += heal;
   			if (this.hp > this.maxHp) {
   				this.hp = this.maxHp;

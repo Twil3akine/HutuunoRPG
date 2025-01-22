@@ -21,7 +21,7 @@
 //
 //		// 勇者たちに30ダメージを与える
 //		for (AbstractCharacter h : party.getMembers()) {
-//			h.gotDamage(30);
+//			h.getDamage(30);
 //		}
 //
 //		// 町でホテルに行ってダメージ回復
