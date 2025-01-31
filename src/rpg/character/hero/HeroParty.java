@@ -1,5 +1,6 @@
 package rpg.character.hero;
 
+import static rpg.Print.print;
 import rpg.character.AbstractCharacter;
 import rpg.character.AbstractParty;
 
@@ -19,11 +20,11 @@ public class HeroParty extends AbstractParty {
 		for (AbstractCharacter target: this.getMembers()) {
 			this.printPartyStatus((Hero)target);
 		}
-		System.out.println();
+		print();
 	}
 	
 	private void printPartyStatus(Hero hero) {
-		System.out.println(hero.getName() + "(" + hero.job + "): " + (hero.isEscaped() ? "逃亡" : (hero.isDead() ? "死亡" : hero.getHp())));
+		print(hero.getName() + "(" + hero.job + "): " + (hero.isEscaped() ? "逃亡" : (hero.isDead() ? "死亡" : hero.getHp())));
 	}
 	
 	public boolean isEscapeAll() {
@@ -32,7 +33,7 @@ public class HeroParty extends AbstractParty {
 				return false;
 			}
 		}
-		System.out.println("チームは全員逃げている！");
+		print("チームは全員逃げている！");
 		return true; 
 	}
 	

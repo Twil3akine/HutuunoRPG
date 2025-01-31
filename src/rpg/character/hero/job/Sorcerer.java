@@ -1,5 +1,6 @@
 package rpg.character.hero.job;
 
+import static rpg.Print.print;
 import rpg.character.AbstractCharacter;
 import rpg.character.AbstractParty;
 
@@ -14,7 +15,7 @@ public class Sorcerer extends AbstractSuperHero {
 
     public boolean special(AbstractParty targets) {
         int randomAttack = new Random().nextInt(attack) + attack;
-        System.out.println(this.getName() + "のライトニング！\n相手全体に" + randomAttack + "のダメージを与えた！");
+        print(this.getName() + "のライトニング！\n相手全体に" + randomAttack + "のダメージを与えた！");
 
         for (AbstractCharacter target: targets.getMembers()) {
             if (target.isDead() || target.isEscaped()) continue;

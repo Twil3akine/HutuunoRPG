@@ -1,5 +1,6 @@
 package rpg.character.hero.job;
 
+import static rpg.Print.print;
 import rpg.ScanCommand;
 import rpg.character.AbstractParty;
 import rpg.character.Specialist;
@@ -11,8 +12,8 @@ public abstract class AbstractSuperHero extends Hero implements Specialist {
 	}
 
 	protected void command(AbstractParty allies, AbstractParty enemies) {
-		System.out.println(this.getName() + "(" + this.job + ")の行動");
-		System.out.println("1: 戦う   2: 逃げる   3: 必殺技");
+		print(this.getName() + "(" + this.job + ")の行動");
+		print("1: 戦う   2: 逃げる   3: 必殺技");
 		int command = ScanCommand.scan();
 		switch (command) {
 			case (1), (3):

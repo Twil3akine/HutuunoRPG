@@ -1,5 +1,6 @@
 package rpg.character.hero.job;
 
+import static rpg.Print.print;
 import rpg.character.AbstractCharacter;
 import rpg.character.AbstractParty;
 
@@ -20,7 +21,7 @@ public class Warrior extends AbstractSuperHero {
         int randomAttack = new Random().nextInt(attack) + attack + (Pattern.matches(".*ドラゴン.*", target.getName()) ? 30 : 0);
         int damage = target.getDamage(randomAttack);
 
-        System.out.println(this.getName() + "のドラゴンキック！ " + target.getName() + "は" + randomAttack + "のダメージを受けた！");
+        print(this.getName() + "のドラゴンキック！ " + target.getName() + "は" + randomAttack + "のダメージを受けた！");
         target.actionStatus();
 
         return true;

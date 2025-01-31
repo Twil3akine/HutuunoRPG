@@ -1,6 +1,7 @@
 package rpg;
 
 import java.util.Scanner;
+import static rpg.Print.print;
 
 public class ScanCommand {
 	// fields
@@ -13,7 +14,7 @@ public class ScanCommand {
 			try {
                 return scan.nextInt();
 			} catch(Exception e) {
-				System.out.println("正しい値を入力してください。");
+				print("正しい値を入力してください。");
 				scan.next();
 			}
 		}

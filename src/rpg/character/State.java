@@ -5,6 +5,4 @@ public enum State {
 	POISON,
 	SLEEP,
 	PARALYSIS;
-	
-	
 }

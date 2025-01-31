@@ -1,6 +1,7 @@
 package rpg.character;
 
 import java.util.Random;
+import static rpg.Print.print;
 
 public abstract class AbstractCharacter extends Object {
 	// fields
@@ -63,7 +64,7 @@ public abstract class AbstractCharacter extends Object {
 		Random random = new Random();
 		int randomDamage = random.nextInt(this.attack) + this.attack;
 		target.getDamage(randomDamage);
-		System.out.println(this.name + "の攻撃、" + target.name + "に" + randomDamage + "のダメージ！\n");
+		print(this.name + "の攻撃、" + target.name + "に" + randomDamage + "のダメージ！\n");
 		target.actionStatus();
 		return true;
 	}
@@ -90,7 +91,7 @@ public abstract class AbstractCharacter extends Object {
   
   		public void actionStatus() {
   			if (this.isDead()) {
-  				System.out.println(this.name + "は倒れた。");
+  				print(this.name + "は倒れた。");
 		}
 	}
 }
