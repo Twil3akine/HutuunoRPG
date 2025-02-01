@@ -2,14 +2,14 @@ package rpg;
 
 public class Print {
     /**
-     * Prints a newline.
+     * 改行を行う
      */
     public static void print() {
         System.out.println();
     }
 
     /**
-     * Prints a message.
+     * 引数を出力する
      *
      * @param message the message to print
      */
@@ -18,7 +18,7 @@ public class Print {
     }
 
     /**
-     * Prints messages.
+     * 配列の要素を出力する
      *
      * @param messages the messages array to print
      */

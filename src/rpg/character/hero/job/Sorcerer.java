@@ -7,12 +7,23 @@ import rpg.character.AbstractParty;
 import java.util.Random;
 
 public class Sorcerer extends AbstractSuperHero {
+    /**
+     * コンストラクタ
+     *
+     * @param name 名前
+     */
     public Sorcerer(String name) {
         super(name, 100, 15);
         this.job = "魔法使い";
         this.escaped = false;
     }
 
+    /**
+     * 特殊技
+     *
+     * @param targets 対象パーティ
+     * @return true
+     */
     public boolean special(AbstractParty targets) {
         int randomAttack = new Random().nextInt(attack) + attack;
         print(this.getName() + "のライトニング！\n相手全体に" + randomAttack + "のダメージを与えた！");

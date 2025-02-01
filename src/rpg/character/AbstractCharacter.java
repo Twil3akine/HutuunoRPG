@@ -3,7 +3,7 @@ package rpg.character;
 import java.util.Random;
 import static rpg.Print.print;
 
-public abstract class AbstractCharacter extends Object {
+public abstract class AbstractCharacter {
 	// fields
 	protected int attack;
 	protected boolean escaped;
@@ -14,14 +14,22 @@ public abstract class AbstractCharacter extends Object {
 //	private int speed;
 //	private State state;
 	private String name;
-	// constructor
+	/**
+	 * コンストラクタ
+	 *
+	 * @param name キャラクター名
+	 * @param hp HP
+	 * @param mp MP
+	 * @param attack 攻撃力
+	 * @param speed 速さ
+	 */
 	protected AbstractCharacter(String name, 
 																 int hp,
 																 //int mp,
 																 int attack
 																 //int speed
 																 )
-{
+	{
 		this.attack = attack;
 		this.escaped = false;
 		this.hp = hp; this.maxHp = hp;
@@ -30,12 +38,29 @@ public abstract class AbstractCharacter extends Object {
 		//this.state = State.NONE;
 		this.name = name;
 	}
-	// methods
+
+	/**
+	 * コマンドを実行
+	 *
+	 * @param allies 味方パーティ
+	 * @param enemies 敵パーティ
+	 */
 	protected abstract void command(AbstractParty allies,
 									AbstractParty enemies);
-	
+
+	/**
+	 * 攻撃対象を選択
+	 *
+	 * @param targets 対象パーティ
+	 * @return 攻撃対象
+	 */
 	protected abstract AbstractCharacter selectTarget(AbstractParty targets);
-	
+
+	/**
+	 * キャラクターの各要素を取得
+	 *
+	 * @return キャラクターの各要素
+	 */
 	public int getAttack() { return this.attack; }
 	public int getHp() { return this.hp; }
 	public int getMaxHp() { return this.maxHp; }
@@ -44,7 +69,12 @@ public abstract class AbstractCharacter extends Object {
 	//public int getSpeed() { return this.speed; }
 	//public State getState() { return this.state; }
 	public String getName() { return this.name; }
-	
+
+	/**
+	 * キャラクターの各要素を設定
+	 *
+	 * @param param キャラクターの各パラメータ
+	 */
 	public void setAttack(int attack) { this.attack = attack; }
 	public void setHp(int hp) { this.hp = hp; }
 	public void setMaxHp(int maxHp) { this.maxHp = maxHp; }
@@ -54,8 +84,19 @@ public abstract class AbstractCharacter extends Object {
 	//public void setState(State state) { this.state = state; }
 	public void setName(String name) { this.name = name; }
 
-	public boolean isDead() { return (this.hp <= 0) ? (true) : (false); }
+	/**
+	 * 生死を返す
+	 *
+	 * @return キャラクターの生死
+	 */
+	public boolean isDead() { return this.hp <= 0; }
 
+	/**
+	 * 攻撃を行う
+	 *
+	 * @param enemies 敵パーティ
+	 * @return 攻撃が成功したかどうか
+	 */
 	public boolean attack(AbstractParty enemies) {
 		AbstractCharacter target = this.selectTarget(enemies);
 		if (target.isDead() || target.isEscaped()) {
@@ -69,29 +110,48 @@ public abstract class AbstractCharacter extends Object {
 		return true;
 	}
 
-  		public int getDamage(int damage) {
-  			this.hp -= damage;
-  			if (this.hp<0) {
-  				this.hp = 0;
-  			}
-  			return damage;
-  		}
+	/**
+	 * キャラクターのHPを減少
+	 *
+	 * @param damage ダメージ量
+	 * @return 実際に与えたダメージ
+	 */
+	public int getDamage(int damage) {
+		int currentHp = this.getHp();
 
-  		public int getHeal(int heal) {
-  			this.hp += heal;
-  			if (this.hp > this.maxHp) {
-  				this.hp = this.maxHp;
-  			}
-  			return heal;
-  		}
+		return damage;
+	}
 
-  		public boolean isEscaped() { return this.escaped; }
+	/**
+	 * キャラクターのHPを回復
+	 *
+	 * @param heal 回復量
+	 */
+	public void getHeal(int heal) {
+		this.hp += heal;
+		if (this.hp > this.maxHp) {
+			this.hp = this.maxHp;
+		}
+	}
 
-  		public void init() { this.escaped = false; }
-  
-  		public void actionStatus() {
-  			if (this.isDead()) {
-  				print(this.name + "は倒れた。");
+	/**
+	 * 逃走したかどうかを返す
+	 *
+	 * @return 逃げることができたかどうか
+	 */
+	public boolean isEscaped() { return this.escaped; }
+
+	/**
+	 * 各キャラクターの isEscape を初期化
+	 */
+	public void init() { this.escaped = false; }
+
+	/**
+	 * キャラクターのステータスを表示
+	 */
+	public void actionStatus() {
+		if (this.isDead()) {
+			print(this.name + "は倒れた。");
 		}
 	}
 }

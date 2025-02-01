@@ -10,13 +10,23 @@ public abstract class Dungeon extends Area {
     protected int floorNumber;
     protected int encounterCount;
 
-    // Constructor
     public Dungeon() {}
 
-    // Methods
+    /**
+     * ボスモンスターを取得
+     *
+     * @return Monster
+     */
     protected abstract Monster nextBoss();
+
+    /**
+     * 次のエリアを取得
+     *
+     * @return Area
+     */
     protected abstract Area nextArea();
 
+    @Override
     public Area access(HeroParty party) {
         this.printArea();
         party.printPartyStatus();
@@ -41,22 +51,47 @@ public abstract class Dungeon extends Area {
         }
     }
 
+    /**
+     * 探索
+     *
+     * @param party パーティ
+     * @return String WIN or LOSE
+     */
     public String explore(HeroParty party) {
         return null;
     }
 
+    /**
+     * モブとのエンカウント
+     *
+     * @param party パーティ
+     * @return String WIN or LOSE
+     */
     private String encounterMob(HeroParty party) {
         return null;
     }
 
+    /**
+     * ボスとのエンカウント
+     *
+     * @param party パーティ
+     * @return String WIN or LOSE
+     */
     private String encounterBoss(HeroParty party) {
         return null;
     }
 
+    @Override
     public void printArea() {
 
     }
 
+    /**
+     * バトル結果を表示
+     *
+     * @param result 結果
+     * @param string メッセージ
+     */
     private void printBattleResult(String result,
                                    String string) {
 
