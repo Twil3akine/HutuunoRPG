@@ -1,6 +1,7 @@
 package rpg.area;
 
 import rpg.character.hero.HeroParty;
+import static rpg.Print.print;
 
 public abstract class Area {
     // Field
@@ -20,14 +21,9 @@ public abstract class Area {
     /**
      * エリアの名前を出力
      */
-    public abstract void printArea();
-
-    /**
-     * エリアでのアクションの選択肢を出力
-     *
-     * @return String
-     */
-    public abstract String printAction();
+    public void printArea() {
+        print("ここは" + this.name + "です");
+    }
 
     /**
      * エリアの名前を取得

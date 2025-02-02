@@ -2,7 +2,7 @@ package rpg.character;
 
 public abstract class AbstractParty {
 	// fields
-	private AbstractCharacter[] members;
+	final private AbstractCharacter[] members;
 
 	/**
 	 * コンストラクタ
@@ -16,7 +16,7 @@ public abstract class AbstractParty {
 	 *
 	 * @return 全員が逃げていたらtrue
 	 */
-	protected abstract boolean isEscapeAll();
+	protected abstract boolean isAllEscape();
 
 	/**
 	 * 全員が死んでいるかどうか
@@ -24,9 +24,22 @@ public abstract class AbstractParty {
 	 * @return 全員が死んでいたらtrue
 	 */
 	public boolean isAllDead() {
-		boolean deadFlg = false;
 		for (AbstractCharacter character: this.members) {
 			if (!character.isDead()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * 全員が戦闘不能かどうか
+	 *
+	 * @return 全員が戦闘不能ならtrue
+	 */
+	public boolean isAllFighting() {
+		for (AbstractCharacter character: this.members) {
+			if (!character.isDead() && !character.isEscaped()) {
 				return false;
 			}
 		}
@@ -46,7 +59,7 @@ public abstract class AbstractParty {
 			  if (enemies.isAllDead()) {
 				  return "BEAT";
 			  }
-			  if (this.isEscapeAll()) {
+			  if (this.isAllEscape() || enemies.isAllFighting()) {
 				  return "ESCAPE";
 			  }
 		  }

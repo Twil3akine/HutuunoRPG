@@ -27,13 +27,13 @@ public class CheckPoint2Party {
 			System.out.println("部隊1のターン");
 			corps1.printPartyStatus();
 			corps1.turn(corps2);
-			if(corps1.isEscapeAll()) {
+			if(corps1.isAllEscape()) {
 				break;
 			}
 			System.out.println("部隊2のターン");
 			corps2.printPartyStatus();
 			corps2.turn(corps1);
-			if(corps2.isEscapeAll()) {
+			if(corps2.isAllEscape()) {
 				break;
 			}
 		}

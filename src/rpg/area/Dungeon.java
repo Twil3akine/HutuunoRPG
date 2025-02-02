@@ -1,16 +1,26 @@
 package rpg.area;
 
 import static rpg.Print.print;
+
+import rpg.BattleField;
 import rpg.ScanCommand;
 import rpg.character.hero.HeroParty;
 import rpg.character.monster.Monster;
+import rpg.character.monster.MonsterParty;
+import rpg.character.monster.monster.BabyDragon;
+
+import java.util.Random;
 
 public abstract class Dungeon extends Area {
     //Fields
     protected int floorNumber;
     protected int encounterCount;
 
+    //Constructor
     public Dungeon() {}
+    public Dungeon(int encounterCount) {
+        this.encounterCount = encounterCount + 1;
+    }
 
     /**
      * ボスモンスターを取得
@@ -24,41 +34,57 @@ public abstract class Dungeon extends Area {
      *
      * @return Area
      */
-    protected abstract Area nextArea();
+    protected abstract Area nextArea(String result);
 
+    /**
+     * エリアにアクセスする
+     *
+     * @param party パーティ
+     * @return Area
+     */
     @Override
     public Area access(HeroParty party) {
         this.printArea();
         party.printPartyStatus();
 
-        print("1: さらに進む\n2: 退却する");
+        print("1. 探索を続ける\t2. 一度引き返す");
 
         int nextMove = ScanCommand.scan();
-        switch (nextMove) {
-            case 1:
+        return switch (nextMove) {
+            case 1 -> {
                 String result = this.explore(party);
-                if (result.equals("WIN")) {
-                    Area nextArea = this.nextArea();
-                    nextArea.access(party);
-                } else if (result.equals("LOSE")) {
-                    DungeonGAMEOVER gameOver = new DungeonGAMEOVER();
-                    gameOver.access(party);
-                }
-            case 2:
-
-            default:
-
-        }
+                yield switch (result) {
+                    case "VICTORY", "WIN", "ESCAPE" -> this.nextArea(result).access(party);
+                    case "LOSE" -> new DungeonGAMEOVER().access(party);
+                    default -> null;
+                };
+            }
+            case 2 -> null;
+            default -> this.access(party);
+        };
     }
 
     /**
      * 探索
      *
      * @param party パーティ
-     * @return String WIN or LOSE
+     * @return String WIN, LOSE, ESCAPE or VICTORY
      */
     public String explore(HeroParty party) {
-        return null;
+        print("探索中... (" + this.encounterCount + "回目)");
+
+        String result = (this.encounterCount >= 3)
+            ? ((int)(Math.random() * 10) <= 2)
+                ? this.encounterBoss(party) : this.encounterMob(party)
+            : this.encounterMob(party);
+
+        this.encounterCount = switch (result) {
+            case "VICTORY" -> 1;
+            case "WIN" -> this.encounterCount + 1;
+            default -> this.encounterCount;
+        };
+
+        return result;
     }
 
     /**
@@ -68,7 +94,22 @@ public abstract class Dungeon extends Area {
      * @return String WIN or LOSE
      */
     private String encounterMob(HeroParty party) {
-        return null;
+        print("モンスターが現れた！");
+
+        Random random = new Random();
+        int numberOfMonsters = random.nextInt(3) + 1;
+
+        Monster[] monsters = new Monster[numberOfMonsters];
+        for (int i=0; i<numberOfMonsters; i++) {
+            monsters[i] = new BabyDragon(i+1);
+        }
+        MonsterParty monsterParty = new MonsterParty(monsters);
+
+        String battleResult = BattleField.battle(party, monsterParty);
+
+        this.printBattleResult(battleResult, "モンスターとの戦い");
+
+        return battleResult;
     }
 
     /**
@@ -78,12 +119,22 @@ public abstract class Dungeon extends Area {
      * @return String WIN or LOSE
      */
     private String encounterBoss(HeroParty party) {
-        return null;
+        print("ボスモンスターが現れた！");
+
+        Monster monster = this.nextBoss();
+
+        String battleResult = BattleField.battle(party, monster);
+
+        this.printBattleResult(battleResult, monster.getName() + "との戦い");
+
+        return (battleResult.equals("WIN")) ? "VICTORY" : "LOSE";
     }
 
-    @Override
+    /**
+     * エリア情報を表示
+     */
     public void printArea() {
-
+        print((this.encounterCount == 1) ? "ここは" + this.name + "です" : "次はどうしますか？");
     }
 
     /**
@@ -94,6 +145,16 @@ public abstract class Dungeon extends Area {
      */
     private void printBattleResult(String result,
                                    String string) {
+        System.out.print("勇者たちは" + string);
 
+        print(switch (result) {
+            case "VICTORY" -> "を撃破した！";
+            case "WIN" -> "に勝利した";
+            case "LOSE" -> "に敗北した";
+            case "ESCAPE" -> "から逃げだした";
+            default -> "";
+        });
+
+        print();
     }
 }

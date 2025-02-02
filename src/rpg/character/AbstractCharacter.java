@@ -73,7 +73,7 @@ public abstract class AbstractCharacter {
 	/**
 	 * キャラクターの各要素を設定
 	 *
-	 * @param param キャラクターの各パラメータ
+	 * @param params キャラクターの各パラメータ
 	 */
 	public void setAttack(int attack) { this.attack = attack; }
 	public void setHp(int hp) { this.hp = hp; }
@@ -117,7 +117,8 @@ public abstract class AbstractCharacter {
 	 * @return 実際に与えたダメージ
 	 */
 	public int getDamage(int damage) {
-		int currentHp = this.getHp();
+		damage = Math.min(this.getHp(), damage);
+		this.hp -= damage;
 
 		return damage;
 	}
@@ -129,9 +130,7 @@ public abstract class AbstractCharacter {
 	 */
 	public void getHeal(int heal) {
 		this.hp += heal;
-		if (this.hp > this.maxHp) {
-			this.hp = this.maxHp;
-		}
+		this.hp = Math.min(this.hp, this.maxHp);
 	}
 
 	/**

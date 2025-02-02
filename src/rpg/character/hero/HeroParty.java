@@ -47,7 +47,7 @@ public class HeroParty extends AbstractParty {
 	 *
 	 * @return 全員が逃げている場合は true, そうでない場合は false
 	 */
-	public boolean isEscapeAll() {
+	public boolean isAllEscape() {
 		for (AbstractCharacter target: this.getMembers()) {
 			if (!target.isEscaped()) {
 				return false;
