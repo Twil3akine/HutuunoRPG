@@ -24,7 +24,7 @@ public class KingDamon extends BossMonster {
      * @return true
      */
     public boolean special(AbstractParty targets) {
-        print(this.getName() + "のギガドレイン！");
+        print(this.getName() + "のギガドレイン！\n");
 
         int drainDamage = 0;
         int currentHp = this.getHp();
@@ -39,7 +39,7 @@ public class KingDamon extends BossMonster {
         }
 
         this.getHeal(drainDamage);
-        print(this.getName() + "は" + (this.getHp()-currentHp) + "回復した！");
+        print(this.getName() + "は" + (this.getHp()-currentHp) + "回復した！\n");
 
         return true;
     }

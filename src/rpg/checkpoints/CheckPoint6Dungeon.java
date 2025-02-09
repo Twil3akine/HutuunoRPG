@@ -19,7 +19,7 @@ public class CheckPoint6Dungeon {
 
 		// ダンジョン地下1階に行く
 		// ドラゴンを倒したら終了
-		Dungeon1st dungeon = new Dungeon1st();
+		Dungeon3rd dungeon = new Dungeon3rd();
 		dungeon.access(party);
 	}
 }

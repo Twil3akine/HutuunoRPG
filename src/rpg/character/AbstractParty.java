@@ -1,5 +1,7 @@
 package rpg.character;
 
+import static rpg.character.State.CORRECT;
+
 public abstract class AbstractParty {
 	// fields
 	final private AbstractCharacter[] members;
@@ -55,7 +57,8 @@ public abstract class AbstractParty {
 	public String turn(AbstractParty enemies) {
 	  for (AbstractCharacter character: this.getMembers()) {
 		  if (!character.isDead() && !character.isEscaped()) {
-			  character.command(this, enemies);
+			  character.StateAbnormal();
+			  if (character.getState() == CORRECT) character.command(this, enemies);
 			  if (enemies.isAllDead()) {
 				  return "BEAT";
 			  }

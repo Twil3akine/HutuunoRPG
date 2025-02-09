@@ -32,7 +32,7 @@ public class Warrior extends AbstractSuperHero {
         int randomAttack = new Random().nextInt(attack) + attack + (Pattern.matches(".*ドラゴン.*", target.getName()) ? 30 : 0);
         int damage = target.getDamage(randomAttack);
 
-        print(this.getName() + "のドラゴンキック！ " + target.getName() + "は" + randomAttack + "のダメージを受けた！");
+        print(this.getName() + "のドラゴンキック！ " + target.getName() + "は" + randomAttack + "のダメージを受けた！\n");
         target.actionStatus();
 
         return true;

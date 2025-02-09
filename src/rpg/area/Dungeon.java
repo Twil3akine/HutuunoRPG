@@ -9,6 +9,7 @@ import rpg.character.monster.Monster;
 import rpg.character.monster.MonsterParty;
 import rpg.character.monster.monster.BabyDragon;
 import rpg.character.monster.monster.Damon;
+import rpg.character.monster.monster.Matango;
 
 import java.util.Random;
 
@@ -105,6 +106,7 @@ public abstract class Dungeon extends Area {
             monsters[i] = switch (this.floorNumber) {
                 case 1 -> new BabyDragon(i+1);
                 case 2 -> new Damon(i+1);
+                case 3 -> new Matango(i+1);
                 default -> null;
             };
         }

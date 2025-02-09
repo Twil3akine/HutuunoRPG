@@ -36,7 +36,7 @@ public abstract class BossMonster extends Monster implements Specialist {
                 }
             }
         } else {
-            print(this.getName() + "はくしゃみに気をとられてしまった！");
+            print(this.getName() + "は我々を見下している！\n");
         }
     }
 }

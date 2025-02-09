@@ -24,7 +24,7 @@ public class Dragon extends BossMonster {
      * @return true
      */
     public boolean special(AbstractParty targets) {
-        print(this.getName() + "の流星群！");
+        print(this.getName() + "の流星群！\n");
 
         for (AbstractCharacter target: targets.getMembers()) {
             if (target.isDead() || target.isEscaped()) continue;

@@ -1,6 +1,8 @@
 package rpg.character.hero;
 
 import static rpg.Print.print;
+import static rpg.character.State.CORRECT;
+
 import rpg.character.AbstractCharacter;
 import rpg.character.AbstractParty;
 
@@ -20,6 +22,7 @@ public class HeroParty extends AbstractParty {
 	public void rest() {
 		for (AbstractCharacter target: this.getMembers()) {
 			((Hero)target).rest();
+			target.setState(CORRECT);
 		}
 	}
 

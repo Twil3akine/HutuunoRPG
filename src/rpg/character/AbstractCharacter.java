@@ -2,6 +2,9 @@ package rpg.character;
 
 import java.util.Random;
 import static rpg.Print.print;
+import static rpg.character.State.CORRECT;
+
+import rpg.character.State;
 
 public abstract class AbstractCharacter {
 	// fields
@@ -12,7 +15,7 @@ public abstract class AbstractCharacter {
 //	private int mp;
 //	private int maxMp;
 //	private int speed;
-//	private State state;
+	private State state;
 	private String name;
 	/**
 	 * コンストラクタ
@@ -35,7 +38,7 @@ public abstract class AbstractCharacter {
 		this.hp = hp; this.maxHp = hp;
 		//this.mp = mp; this.maxMp = mp;
 		//this.speed = speed;
-		//this.state = State.NONE;
+		this.state = CORRECT;
 		this.name = name;
 	}
 
@@ -67,7 +70,7 @@ public abstract class AbstractCharacter {
 	//public int getMp() { return this.mp; }
 	//public int getMaxMp() { return this.maxMp; }
 	//public int getSpeed() { return this.speed; }
-	//public State getState() { return this.state; }
+	public State getState() { return this.state; }
 	public String getName() { return this.name; }
 
 	/**
@@ -81,7 +84,7 @@ public abstract class AbstractCharacter {
 	//public void setMp(int mp) { this.mp = mp; }
 	//public void setMaxMp(int maxMp) { this.maxMp = maxMp; }
 	//public void setSpeed(int speed) { this.speed = speed; }
-	//public void setState(State state) { this.state = state; }
+	public void setState(State state) { this.state = state; }
 	public void setName(String name) { this.name = name; }
 
 	/**
@@ -150,7 +153,26 @@ public abstract class AbstractCharacter {
 	 */
 	public void actionStatus() {
 		if (this.isDead()) {
-			print(this.name + "は倒れた。");
+			print(this.name + "は倒れた。\n");
+		}
+
+		if (!(this.state == CORRECT)) {
+			print(this.name + "は" + switch (this.state) {
+				case SLEEP -> "眠ってしまった\n";
+				default -> null;
+			} + "!");
+		}
+	}
+
+	public void StateAbnormal() {
+		if (!(this.state == CORRECT)) {
+			switch (this.state) {
+				case SLEEP:
+					int recovery = new Random().nextInt(10);
+					if (recovery <= 4) this.setState(CORRECT);
+					print(this.name + "は" + (this.state.equals(CORRECT) ? "目を覚ました！" : "眠っている..."));
+					print();
+			}
 		}
 	}
 }

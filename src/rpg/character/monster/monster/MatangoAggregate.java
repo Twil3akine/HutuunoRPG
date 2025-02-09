@@ -6,6 +6,7 @@ import rpg.character.AbstractParty;
 import java.util.Random;
 
 import static rpg.Print.print;
+import static rpg.character.State.SLEEP;
 
 
 public class MatangoAggregate extends BossMonster {
@@ -14,7 +15,7 @@ public class MatangoAggregate extends BossMonster {
      * マタンゴの集合体
      */
     public MatangoAggregate() {
-        super("マタンゴの集合体", 250, 25);
+        super("集合体マタンゴ", 250, 25);
         this.escaped = false;
     }
 
@@ -25,21 +26,22 @@ public class MatangoAggregate extends BossMonster {
      * @return true
      */
     public boolean special(AbstractParty targets) {
-        print(this.getName() + "のスリープグッドナイト！");
+        print(this.getName() + "のスリープグッドナイト！\n");
 
-        int currentHp = this.getHp();
         for (AbstractCharacter target: targets.getMembers()) {
             if (target.isDead() || target.isEscaped()) continue;
 
-            int randomAttack = new Random().nextInt(this.attack) + this.attack;
+            int randomAttack = new Random().nextInt(this.attack);
             int damage = target.getDamage(randomAttack);
+
+            int setSleep = new Random().nextInt(10);
+            if (setSleep <= 5) {
+                target.setState(SLEEP);
+            }
 
             print(target.getName() + "は" + damage + "ダメージうけた！");
             target.actionStatus();
         }
-
-        this.getHeal(drainDamage);
-        print(this.getName() + "は" + (this.getHp()-currentHp) + "回復した！");
 
         return true;
     }
