@@ -1,6 +1,8 @@
 package rpg.character.hero.job;
 
 import static rpg.Print.print;
+import static rpg.character.State.*;
+
 import rpg.character.AbstractCharacter;
 import rpg.character.AbstractParty;
 
@@ -32,7 +34,12 @@ public class Priest extends AbstractSuperHero {
             int randomHeal = new Random().nextInt(20) + 10;
 
             target.getHeal(randomHeal);
-            print(target.getName() + "は" + randomHeal + "回復した！\n");
+            print(target.getName() + "は" + randomHeal + "回復した！");
+
+            if (target.getState() != CORRECT) {
+                target.setState(CORRECT);
+                print(this.getName() + "は状態異常が治った！\n");
+            }
         }
         return true;
     }

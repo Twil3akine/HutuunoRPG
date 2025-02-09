@@ -1,6 +1,8 @@
 package rpg.character.hero.job;
 
 import static rpg.Print.print;
+import static rpg.character.State.*;
+
 import rpg.character.AbstractCharacter;
 import rpg.character.AbstractParty;
 
@@ -31,8 +33,12 @@ public class Sorcerer extends AbstractSuperHero {
         for (AbstractCharacter target: targets.getMembers()) {
             if (target.isDead() || target.isEscaped()) continue;
 
-            int damage = target.getDamage(randomAttack);
-            target.actionStatus();
+            target.getDamage(randomAttack);
+
+            int setAbnormal = new Random().nextInt(10);
+            if (setAbnormal <= 3) {
+                target.setState(PARALYSIS);
+            }
         }
         return true;
     }

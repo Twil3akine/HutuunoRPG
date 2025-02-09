@@ -12,23 +12,23 @@ public abstract class AbstractCharacter {
 	protected boolean escaped;
 	private int hp;
 	private int maxHp;
-//	private int mp;
+	private int mp;
 //	private int maxMp;
 //	private int speed;
 	private State state;
 	private String name;
+	private boolean paralysisFlg;
 	/**
 	 * コンストラクタ
 	 *
 	 * @param name キャラクター名
 	 * @param hp HP
-	 * @param mp MP
+//	 * @param mp MP
 	 * @param attack 攻撃力
-	 * @param speed 速さ
 	 */
 	protected AbstractCharacter(String name, 
 																 int hp,
-																 //int mp,
+//																 int mp,
 																 int attack
 																 //int speed
 																 )
@@ -40,6 +40,7 @@ public abstract class AbstractCharacter {
 		//this.speed = speed;
 		this.state = CORRECT;
 		this.name = name;
+		this.paralysisFlg = false;
 	}
 
 	/**
@@ -72,11 +73,10 @@ public abstract class AbstractCharacter {
 	//public int getSpeed() { return this.speed; }
 	public State getState() { return this.state; }
 	public String getName() { return this.name; }
+	public boolean getParalysisFlg() { return this.paralysisFlg; }
 
 	/**
 	 * キャラクターの各要素を設定
-	 *
-	 * @param params キャラクターの各パラメータ
 	 */
 	public void setAttack(int attack) { this.attack = attack; }
 	public void setHp(int hp) { this.hp = hp; }
@@ -86,6 +86,7 @@ public abstract class AbstractCharacter {
 	//public void setSpeed(int speed) { this.speed = speed; }
 	public void setState(State state) { this.state = state; }
 	public void setName(String name) { this.name = name; }
+	public void setParalysisFlg() { this.paralysisFlg = !this.paralysisFlg; }
 
 	/**
 	 * 生死を返す
@@ -152,15 +153,17 @@ public abstract class AbstractCharacter {
 	 * キャラクターのステータスを表示
 	 */
 	public void actionStatus() {
-		if (this.isDead()) {
-			print(this.name + "は倒れた。\n");
+		if (!(this.state == CORRECT) && !this.isDead()) {
+			print(this.name + "は" + switch (this.state) {
+				case SLEEP -> "眠ってしまった!\n";
+				case POISON -> "毒にかかってしまった!\n";
+				case PARALYSIS -> "麻痺で体が動かない！\n";
+				default -> null;
+			});
 		}
 
-		if (!(this.state == CORRECT)) {
-			print(this.name + "は" + switch (this.state) {
-				case SLEEP -> "眠ってしまった\n";
-				default -> null;
-			} + "!");
+		if (this.isDead()) {
+			print(this.name + "は倒れた。\n");
 		}
 	}
 
@@ -172,6 +175,26 @@ public abstract class AbstractCharacter {
 					if (recovery <= 4) this.setState(CORRECT);
 					print(this.name + "は" + (this.state.equals(CORRECT) ? "目を覚ました！" : "眠っている..."));
 					print();
+					break;
+
+				case POISON:
+					int poisonDamage = new Random().nextInt(this.hp-1) + 1;
+					int damage = this.getDamage(poisonDamage);
+					print(this.name + "は毒で" + damage + "ダメージ受けた！\n");
+					break;
+
+				case PARALYSIS:
+					if (this.paralysisFlg) {
+						print(this.name + "は体のしびれが取れた！");
+						this.setState(CORRECT);
+					} else {
+						print(this.name + "は体がしびれて動かない！\n");
+						this.setParalysisFlg();
+					}
+					break;
+
+				default:
+					break;
 			}
 		}
 	}

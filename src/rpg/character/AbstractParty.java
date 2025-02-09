@@ -1,6 +1,6 @@
 package rpg.character;
 
-import static rpg.character.State.CORRECT;
+import static rpg.character.State.*;
 
 public abstract class AbstractParty {
 	// fields
@@ -58,7 +58,7 @@ public abstract class AbstractParty {
 	  for (AbstractCharacter character: this.getMembers()) {
 		  if (!character.isDead() && !character.isEscaped()) {
 			  character.StateAbnormal();
-			  if (character.getState() == CORRECT) character.command(this, enemies);
+			  if (character.getState() == CORRECT || character.getState() == POISON) character.command(this, enemies);
 			  if (enemies.isAllDead()) {
 				  return "BEAT";
 			  }

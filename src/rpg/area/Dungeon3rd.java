@@ -32,7 +32,7 @@ public class Dungeon3rd extends Dungeon {
     @Override
     protected Area nextArea(String result) {
         return switch (result) {
-                case "VICTORY" -> new DungeonCLEAR();
+                case "VICTORY" -> new Dungeon4th();
                 case "WIN" -> new Dungeon3rd(this.encounterCount-1);
                 case "ESCAPE" -> new Dungeon3rd(this.encounterCount);
                 default -> null;

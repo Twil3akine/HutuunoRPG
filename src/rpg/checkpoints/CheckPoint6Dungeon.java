@@ -3,8 +3,7 @@ package rpg.checkpoints;
 import rpg.area.*;
 import rpg.character.hero.Hero;
 import rpg.character.hero.HeroParty;
-import rpg.character.hero.job.Sorcerer;
-import rpg.character.hero.job.Warrior;
+import rpg.character.hero.job.*;
 
 public class CheckPoint6Dungeon {
 

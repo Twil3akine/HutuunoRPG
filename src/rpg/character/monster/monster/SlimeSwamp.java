@@ -6,16 +6,16 @@ import rpg.character.AbstractParty;
 import java.util.Random;
 
 import static rpg.Print.print;
-import static rpg.character.State.SLEEP;
+import static rpg.character.State.POISON;
 
 
-public class MatangoAggregate extends BossMonster {
+public class SlimeSwamp extends BossMonster {
     /**
      * コンストラクタ
-     * マタンゴの集合体
+     * name: 沼スライム, hp: 300, attack: 10
      */
-    public MatangoAggregate() {
-        super("集合体マタンゴ", 250, 25);
+    public SlimeSwamp() {
+        super("沼スライム", 300, 5);
         this.escaped = false;
     }
 
@@ -26,23 +26,22 @@ public class MatangoAggregate extends BossMonster {
      * @return true
      */
     public boolean special(AbstractParty targets) {
-        print(this.getName() + "のスリープグッドナイト！\n");
+        print(this.getName() + "のポイポイポイズン！\n");
 
         for (AbstractCharacter target: targets.getMembers()) {
             if (target.isDead() || target.isEscaped()) continue;
 
-            int randomAttack = new Random().nextInt(this.attack);
+            int randomAttack = new Random().nextInt(attack) + attack;
             int damage = target.getDamage(randomAttack);
+            print(target.getName() + "は" + damage + "ダメージうけた！");
 
             int setAbnormal = new Random().nextInt(10);
-            if (setAbnormal <= 5) {
-                target.setState(SLEEP);
+            if (setAbnormal <= 3) {
+                target.setState(POISON);
             }
 
-            print(target.getName() + "は" + damage + "ダメージうけた！");
             target.actionStatus();
         }
-
         return true;
     }
 }
