@@ -28,10 +28,10 @@ public abstract class BossMonster extends Monster implements Specialist {
      */
     protected void command(AbstractParty allies,
                            AbstractParty enemies) {
-        int command = new Random().nextInt(5);
-        if (command < 3) {
+        int command = new Random().nextInt(11);
+        if (command < 10) {
             while (true) {
-                if (command == 1 ? this.special(enemies) : this.attack((enemies))) {
+                if (command <= 4 ? this.special(enemies) : this.attack((enemies))) {
                     break;
                 }
             }

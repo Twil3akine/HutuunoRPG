@@ -4,6 +4,7 @@ import rpg.area.*;
 import rpg.character.hero.Hero;
 import rpg.character.hero.HeroParty;
 import rpg.character.hero.job.Sorcerer;
+import rpg.character.hero.job.Warrior;
 
 public class CheckPoint6Dungeon {
 
@@ -12,7 +13,7 @@ public class CheckPoint6Dungeon {
 		Hero[] heroes = {
 				new Sorcerer("a1"),
 				new Sorcerer("a2"),
-				new Sorcerer("a3")
+				new Warrior("a3")
 		};
 		HeroParty party = new HeroParty(heroes);
 
