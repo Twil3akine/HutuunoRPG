@@ -6,14 +6,14 @@ import rpg.character.monster.monster.Dragon;
 public class Dungeon1st extends Dungeon {
     public Dungeon1st() {
         super();
-        this.name = "ダンジョン地下1階";
+        this.name = "ドラゴンの巣";
         this.floorNumber = 1;
         this.encounterCount = 1;
     }
 
     public Dungeon1st(int encounterCount) {
         super();
-        this.name = "ダンジョン地下1階";
+        this.name = "ドラゴンの巣";
         this.floorNumber = 1;
         this.encounterCount = encounterCount+1;
     }

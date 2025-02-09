@@ -7,14 +7,14 @@ import rpg.character.monster.monster.KingDamon;
 public class Dungeon2nd extends Dungeon {
     public Dungeon2nd() {
         super();
-        this.name = "ダンジョン地下2階";
+        this.name = "デーモンの館";
         this.floorNumber = 2;
         this.encounterCount = 1;
     }
 
     public Dungeon2nd(int encounterCount) {
         super();
-        this.name = "ダンジョン地下2階";
+        this.name = "デーモンの館";
         this.floorNumber = 2;
         this.encounterCount = encounterCount+1;
     }

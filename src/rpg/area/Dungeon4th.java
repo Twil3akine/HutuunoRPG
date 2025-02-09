@@ -7,14 +7,14 @@ import rpg.character.monster.monster.SlimeSwamp;
 public class Dungeon4th extends Dungeon {
     public Dungeon4th() {
         super();
-        this.name = "ダンジョン地下4階";
+        this.name = "スライムの湖沼";
         this.floorNumber = 4;
         this.encounterCount = 1;
     }
 
     public Dungeon4th(int encounterCount) {
         super();
-        this.name = "ダンジョン地下4階";
+        this.name = "スライムの湖沼";
         this.floorNumber = 4;
         this.encounterCount = encounterCount+1;
     }

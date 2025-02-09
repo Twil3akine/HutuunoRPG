@@ -7,14 +7,14 @@ import rpg.character.monster.monster.MatangoAggregate;
 public class Dungeon3rd extends Dungeon {
     public Dungeon3rd() {
         super();
-        this.name = "ダンジョン地下3階";
+        this.name = "マタンゴの森";
         this.floorNumber = 3;
         this.encounterCount = 1;
     }
 
     public Dungeon3rd(int encounterCount) {
         super();
-        this.name = "ダンジョン地下3階";
+        this.name = "マタンゴの森";
         this.floorNumber = 3;
         this.encounterCount = encounterCount+1;
     }
