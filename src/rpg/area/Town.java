@@ -2,7 +2,6 @@ package rpg.area;
 
 import rpg.ScanCommand;
 import rpg.character.hero.HeroParty;
-import rpg.area.Area;
 
 import static rpg.Print.print;
 

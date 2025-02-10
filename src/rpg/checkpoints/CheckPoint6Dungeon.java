@@ -1,9 +1,10 @@
 package rpg.checkpoints;
 
-import rpg.area.*;
+import rpg.area.DungeonFINAL;
 import rpg.character.hero.Hero;
 import rpg.character.hero.HeroParty;
-import rpg.character.hero.job.*;
+import rpg.character.hero.job.Sorcerer;
+import rpg.character.hero.job.Warrior;
 
 public class CheckPoint6Dungeon {
 
@@ -18,7 +19,7 @@ public class CheckPoint6Dungeon {
 
 		// ダンジョン地下1階に行く
 		// ドラゴンを倒したら終了
-		Dungeon3rd dungeon = new Dungeon3rd();
+		DungeonFINAL dungeon = new DungeonFINAL();
 		dungeon.access(party);
 	}
 }

@@ -1,7 +1,6 @@
 package rpg.area;
 
 import rpg.character.monster.Monster;
-import rpg.character.monster.monster.Dragon;
 import rpg.character.monster.monster.KingDamon;
 
 public class Dungeon2nd extends Dungeon {

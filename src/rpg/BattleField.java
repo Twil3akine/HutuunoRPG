@@ -1,10 +1,11 @@
 package rpg;
 
-import static rpg.Print.print;
 import rpg.character.AbstractCharacter;
 import rpg.character.hero.HeroParty;
 import rpg.character.monster.Monster;
 import rpg.character.monster.MonsterParty;
+
+import static rpg.Print.print;
 
 public class BattleField {
     // Constructor

@@ -1,9 +1,10 @@
 package rpg.character.hero;
 
-import static rpg.Print.print;
 import rpg.ScanCommand;
 import rpg.character.AbstractCharacter;
 import rpg.character.AbstractParty;
+
+import static rpg.Print.print;
 
 public class Hero extends AbstractCharacter {
 	// fields

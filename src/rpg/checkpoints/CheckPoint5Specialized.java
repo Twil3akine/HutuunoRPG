@@ -8,8 +8,8 @@ import rpg.character.hero.job.Sorcerer;
 import rpg.character.hero.job.Warrior;
 import rpg.character.monster.Monster;
 import rpg.character.monster.MonsterParty;
-import rpg.character.monster.monster.Dragon;
 import rpg.character.monster.monster.BabyDragon;
+import rpg.character.monster.monster.Dragon;
 
 public class CheckPoint5Specialized {
 

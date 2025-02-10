@@ -1,12 +1,12 @@
 package rpg.character.hero.job;
 
-import static rpg.Print.print;
-import static rpg.character.State.*;
-
 import rpg.character.AbstractCharacter;
 import rpg.character.AbstractParty;
 
 import java.util.Random;
+
+import static rpg.Print.print;
+import static rpg.character.State.PARALYSIS;
 
 public class Sorcerer extends AbstractSuperHero {
     /**

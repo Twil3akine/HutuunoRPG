@@ -1,7 +1,6 @@
 package rpg.area;
 
 import rpg.character.monster.Monster;
-import rpg.character.monster.monster.KingDamon;
 import rpg.character.monster.monster.MatangoAggregate;
 
 public class Dungeon3rd extends Dungeon {

@@ -1,11 +1,8 @@
 package rpg.checkpoints;
 
 import rpg.BattleField;
-//import rpg.area.*;
-import rpg.character.AbstractCharacter;
 import rpg.character.hero.Hero;
 import rpg.character.hero.HeroParty;
-// import rpg.character.hero.job.Warrior;
 import rpg.character.monster.Monster;
 import rpg.character.monster.MonsterParty;
 import rpg.character.monster.monster.BabyDragon;

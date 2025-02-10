@@ -1,6 +1,7 @@
 package rpg.area;
 
 import rpg.character.hero.HeroParty;
+
 import static rpg.Print.print;
 
 public abstract class Area {

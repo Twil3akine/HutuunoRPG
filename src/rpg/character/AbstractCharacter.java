@@ -1,10 +1,10 @@
 package rpg.character;
 
 import java.util.Random;
+
 import static rpg.Print.print;
 import static rpg.character.State.CORRECT;
-
-import rpg.character.State;
+import static rpg.character.State.CRASH;
 
 public abstract class AbstractCharacter {
 	// fields
@@ -109,8 +109,10 @@ public abstract class AbstractCharacter {
 		Random random = new Random();
 		int randomDamage = random.nextInt(this.attack) + this.attack;
 		target.getDamage(randomDamage);
-		print(this.name + "の攻撃、" + target.name + "に" + randomDamage + "のダメージ！\n");
+
+		print(this.name + "の攻撃、" + target.name + "に" + (randomDamage * (this.state == CRASH ? 2 : 1)) + "のダメージ！\n");
 		target.actionStatus();
+
 		return true;
 	}
 
@@ -121,7 +123,7 @@ public abstract class AbstractCharacter {
 	 * @return 実際に与えたダメージ
 	 */
 	public int getDamage(int damage) {
-		damage = Math.min(this.getHp(), damage);
+		damage = Math.min(this.getHp(), damage * (this.state == CRASH ? 2 : 1));
 		this.hp -= damage;
 
 		return damage;
@@ -158,6 +160,7 @@ public abstract class AbstractCharacter {
 				case SLEEP -> "眠ってしまった!\n";
 				case POISON -> "毒にかかってしまった!\n";
 				case PARALYSIS -> "麻痺で体が動かない！\n";
+				case CRASH -> "コアが不安定だ！\n";
 				default -> null;
 			});
 		}

@@ -1,6 +1,7 @@
 package rpg.character;
 
-import static rpg.character.State.*;
+import static rpg.character.State.CORRECT;
+import static rpg.character.State.POISON;
 
 public abstract class AbstractParty {
 	// fields

@@ -1,7 +1,6 @@
 package rpg.area;
 
 import rpg.character.monster.Monster;
-import rpg.character.monster.monster.MatangoAggregate;
 import rpg.character.monster.monster.SlimeSwamp;
 
 public class Dungeon4th extends Dungeon {
@@ -30,7 +29,7 @@ public class Dungeon4th extends Dungeon {
     @Override
     protected Area nextArea(String result) {
         return switch (result) {
-                case "VICTORY" -> new DungeonCLEAR();
+                case "VICTORY" -> new DungeonFINAL();
                 case "WIN" -> new Dungeon4th(this.encounterCount-1);
                 case "ESCAPE" -> new Dungeon4th(this.encounterCount);
                 default -> null;

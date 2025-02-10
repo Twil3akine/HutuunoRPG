@@ -2,9 +2,10 @@ package rpg.character.monster.monster;
 
 import rpg.character.AbstractCharacter;
 import rpg.character.AbstractParty;
-import static rpg.Print.print;
 
 import java.util.Random;
+
+import static rpg.Print.print;
 
 
 public class KingDamon extends BossMonster {

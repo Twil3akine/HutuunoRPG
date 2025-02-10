@@ -1,11 +1,12 @@
 package rpg.character.hero.job;
 
-import static rpg.Print.print;
 import rpg.character.AbstractCharacter;
 import rpg.character.AbstractParty;
 
 import java.util.Random;
 import java.util.regex.Pattern;
+
+import static rpg.Print.print;
 
 public class Warrior extends AbstractSuperHero {
     /**

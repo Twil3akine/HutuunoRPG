@@ -1,18 +1,15 @@
 package rpg.area;
 
-import static rpg.Print.print;
-
 import rpg.BattleField;
 import rpg.ScanCommand;
 import rpg.character.hero.HeroParty;
 import rpg.character.monster.Monster;
 import rpg.character.monster.MonsterParty;
-import rpg.character.monster.monster.BabyDragon;
-import rpg.character.monster.monster.Damon;
-import rpg.character.monster.monster.Matango;
-import rpg.character.monster.monster.Slime;
+import rpg.character.monster.monster.*;
 
 import java.util.Random;
+
+import static rpg.Print.print;
 
 public abstract class Dungeon extends Area {
     //Fields
@@ -62,7 +59,7 @@ public abstract class Dungeon extends Area {
                     default -> null;
                 };
             }
-            case 2 -> null;
+            case 2 -> new Town();
             default -> this.access(party);
         };
     }
@@ -109,6 +106,7 @@ public abstract class Dungeon extends Area {
                 case 2 -> new Damon(i+1);
                 case 3 -> new Matango(i+1);
                 case 4 -> new Slime(i+1);
+                case 5 -> new ImperialGuard(i+1);
                 default -> null;
             };
         }

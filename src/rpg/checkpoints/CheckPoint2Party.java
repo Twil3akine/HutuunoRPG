@@ -1,7 +1,7 @@
 package rpg.checkpoints;
 
-import rpg.character.hero.HeroParty;
 import rpg.character.hero.Hero;
+import rpg.character.hero.HeroParty;
 
 public class CheckPoint2Party {
 

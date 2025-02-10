@@ -1,6 +1,7 @@
 package rpg;
 
 import java.util.Scanner;
+
 import static rpg.Print.print;
 
 public class ScanCommand {

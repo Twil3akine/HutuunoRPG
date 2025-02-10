@@ -1,9 +1,11 @@
 package rpg.character.monster;
 
-import rpg.ScanCommand;
 import rpg.character.AbstractCharacter;
 import rpg.character.AbstractParty;
+
 import java.util.Random;
+import java.util.regex.Pattern;
+
 import static rpg.Print.print;
 
 public class Monster extends AbstractCharacter {
@@ -37,14 +39,27 @@ public class Monster extends AbstractCharacter {
     protected void command(AbstractParty allies,
                            AbstractParty enemies) {
         int command = new Random().nextInt(5);
-        if (command == 0) {
-            while (true) {
-                if (this.attack(enemies)) {
-                    break;
+        if (Pattern.matches(".*ドラゴン.*", this.getName())) {
+            print(this.getName());
+            if (command == 0) {
+                while (true) {
+                    if (this.attack(enemies)) {
+                        break;
+                    }
                 }
+            } else {
+                print(this.getName() + "はボッーとしている\n");
             }
         } else {
-            print(this.getName() + "はボッーとしている\n");
+            if (command != 0) {
+                while (true) {
+                    if (this.attack(enemies)) {
+                        break;
+                    }
+                }
+            } else {
+                print(this.getName() + "はへばっている\n");
+            }
         }
     }
 

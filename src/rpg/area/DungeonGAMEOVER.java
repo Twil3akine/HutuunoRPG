@@ -1,6 +1,5 @@
 package rpg.area;
 
-import rpg.character.hero.Hero;
 import rpg.character.hero.HeroParty;
 
 import static rpg.Print.print;

@@ -1,10 +1,11 @@
 package rpg.character.hero.job;
 
-import static rpg.Print.print;
 import rpg.ScanCommand;
 import rpg.character.AbstractParty;
 import rpg.character.Specialist;
 import rpg.character.hero.Hero;
+
+import static rpg.Print.print;
 
 public abstract class AbstractSuperHero extends Hero implements Specialist {
 	/**

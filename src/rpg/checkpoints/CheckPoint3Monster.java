@@ -1,10 +1,8 @@
 package rpg.checkpoints;
 
-import rpg.character.AbstractCharacter;
-import rpg.character.hero.*;
-// import rpg.character.hero.job.Warrior;
-import rpg.character.monster.*;
- import rpg.character.monster.monster.*;
+import rpg.character.monster.Monster;
+import rpg.character.monster.MonsterParty;
+import rpg.character.monster.monster.BabyDragon;
 
 public class CheckPoint3Monster {
 

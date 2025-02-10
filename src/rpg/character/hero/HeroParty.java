@@ -1,10 +1,10 @@
 package rpg.character.hero;
 
-import static rpg.Print.print;
-import static rpg.character.State.CORRECT;
-
 import rpg.character.AbstractCharacter;
 import rpg.character.AbstractParty;
+
+import static rpg.Print.print;
+import static rpg.character.State.CORRECT;
 
 public class HeroParty extends AbstractParty {
 	/**
