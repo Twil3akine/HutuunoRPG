@@ -28,7 +28,7 @@ public class MatangoAggregate extends BossMonster {
     public boolean special(AbstractParty targets) {
         print(this.getName() + "のスリープグッドナイト！\n");
 
-        for (AbstractCharacter target: targets.getMembers()) {
+        for (AbstractCharacter target : targets.getMembers()) {
             if (target.isDead() || target.isEscaped()) continue;
 
             int randomAttack = new Random().nextInt(this.attack);

@@ -10,30 +10,30 @@ import rpg.character.hero.job.Warrior;
 
 public class CheckPoint7OtherArea {
 
-	public static void main(String[] args) {
-		// 勇者パーティ作成
-		Hero[] heroes = {
-				new Warrior("a1"),
-				new Warrior("a2"),
-				new Warrior("a3")
-		};
-		HeroParty party = new HeroParty(heroes);
+    public static void main(String[] args) {
+        // 勇者パーティ作成
+        Hero[] heroes = {
+                new Warrior("a1"),
+                new Warrior("a2"),
+                new Warrior("a3")
+        };
+        HeroParty party = new HeroParty(heroes);
 
-		// 勇者たちに30ダメージを与える
-		for (AbstractCharacter h : party.getMembers()) {
-			h.getDamage(30);
-		}
+        // 勇者たちに30ダメージを与える
+        for (AbstractCharacter h : party.getMembers()) {
+            h.getDamage(30);
+        }
 
-		// 町でホテルに行ってダメージ回復
-		Area area;
-		Town town = new Town();
-		area = town.access(party);
-		if (area instanceof Hotel) {
-			area.access(party);
-		}
+        // 町でホテルに行ってダメージ回復
+        Area area;
+        Town town = new Town();
+        area = town.access(party);
+        if (area instanceof Hotel) {
+            area.access(party);
+        }
 
-		// 勇者たちが回復していることを確認
-		party.printPartyStatus();
-	}
+        // 勇者たちが回復していることを確認
+        party.printPartyStatus();
+    }
 
 }

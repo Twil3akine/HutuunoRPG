@@ -9,20 +9,22 @@ import static rpg.Print.print;
 
 public class BattleField {
     // Constructor
-    public BattleField() {}
+    public BattleField() {
+    }
 
     // Methods
+
     /**
      * 勇者たちとモンスターたちが戦闘を行う
      *
-     * @param heroes 勇者たち
+     * @param heroes   勇者たち
      * @param monsters モンスターたち
      * @return 勇者が勝利した場合は"WIN"、敗北した場合は"LOSE"、逃げた場合は"ESCAPE"
      */
     public static String battle(HeroParty heroes,
                                 MonsterParty monsters) {
         heroes.init();
-        for (AbstractCharacter monster: monsters.getMembers()) print(monster.getName() + " ");
+        for (AbstractCharacter monster : monsters.getMembers()) print(monster.getName() + " ");
         print("が現れた！\n");
 
         while (true) {
@@ -45,7 +47,7 @@ public class BattleField {
     /**
      * 勇者たちとモンスターが戦闘を行う
      *
-     * @param heroes 勇者たち
+     * @param heroes  勇者たち
      * @param monster モンスター
      * @return 勇者が勝利した場合は"WIN"、敗北した場合は"LOSE"、逃げた場合は"ESCAPE"
      */

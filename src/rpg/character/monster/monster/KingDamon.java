@@ -29,7 +29,7 @@ public class KingDamon extends BossMonster {
 
         int drainDamage = 0;
         int currentHp = this.getHp();
-        for (AbstractCharacter target: targets.getMembers()) {
+        for (AbstractCharacter target : targets.getMembers()) {
             if (target.isDead() || target.isEscaped()) continue;
 
             int randomAttack = new Random().nextInt(attack) + attack;
@@ -40,7 +40,7 @@ public class KingDamon extends BossMonster {
         }
 
         this.getHeal(drainDamage);
-        print(this.getName() + "は" + (this.getHp()-currentHp) + "回復した！\n");
+        print(this.getName() + "は" + (this.getHp() - currentHp) + "回復した！\n");
 
         return true;
     }

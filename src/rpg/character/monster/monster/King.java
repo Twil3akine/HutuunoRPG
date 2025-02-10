@@ -28,10 +28,10 @@ public class King extends BossMonster {
     public boolean special(AbstractParty targets) {
         print(this.getName() + "のコアクラッシュ！\n");
 
-        for (AbstractCharacter target: targets.getMembers()) {
+        for (AbstractCharacter target : targets.getMembers()) {
             if (target.isDead() || target.isEscaped()) continue;
 
-            int randomAttack = new Random().nextInt(attack) + (int)(attack*1.5);
+            int randomAttack = new Random().nextInt(attack) + (int) (attack * 1.5);
             int damage = target.getDamage(randomAttack);
             print(target.getName() + "は" + damage + "ダメージうけた！");
             target.actionStatus();

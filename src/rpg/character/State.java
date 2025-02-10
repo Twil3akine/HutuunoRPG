@@ -1,9 +1,9 @@
 package rpg.character;
 
 public enum State {
-	CORRECT,
-	SLEEP,
-	POISON,
-	PARALYSIS,
-	CRASH,
+    CORRECT,
+    SLEEP,
+    POISON,
+    PARALYSIS,
+    CRASH,
 }

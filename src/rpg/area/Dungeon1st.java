@@ -15,7 +15,7 @@ public class Dungeon1st extends Dungeon {
         super();
         this.name = "ドラゴンの巣";
         this.floorNumber = 1;
-        this.encounterCount = encounterCount+1;
+        this.encounterCount = encounterCount + 1;
     }
 
     /**
@@ -31,10 +31,10 @@ public class Dungeon1st extends Dungeon {
     @Override
     protected Area nextArea(String result) {
         return switch (result) {
-                case "VICTORY" -> new Dungeon2nd();
-                case "WIN" -> new Dungeon1st(this.encounterCount-1);
-                case "ESCAPE" -> new Dungeon1st(this.encounterCount);
-                default -> null;
+            case "VICTORY" -> new Dungeon2nd();
+            case "WIN" -> new Dungeon1st(this.encounterCount - 1);
+            case "ESCAPE" -> new Dungeon1st(this.encounterCount);
+            default -> null;
         };
     }
 }

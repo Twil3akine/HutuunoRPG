@@ -30,7 +30,7 @@ public class Sorcerer extends AbstractSuperHero {
         int randomAttack = new Random().nextInt(attack) + attack;
         print(this.getName() + "のライトニング！\n相手全体に" + randomAttack + "のダメージを与えた！\n");
 
-        for (AbstractCharacter target: targets.getMembers()) {
+        for (AbstractCharacter target : targets.getMembers()) {
             if (target.isDead() || target.isEscaped()) continue;
 
             target.getDamage(randomAttack);

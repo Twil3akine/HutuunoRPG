@@ -13,6 +13,7 @@ public class Town extends Area {
     }
 
     // Methods
+
     /**
      * エリアにアクセスする
      *

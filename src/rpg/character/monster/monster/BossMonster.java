@@ -12,8 +12,8 @@ public abstract class BossMonster extends Monster implements Specialist {
     /**
      * コンストラクタ
      *
-     * @param name モンスター名
-     * @param hp HP
+     * @param name   モンスター名
+     * @param hp     HP
      * @param attack 攻撃力
      */
     public BossMonster(String name, int hp, int attack) {
@@ -23,7 +23,7 @@ public abstract class BossMonster extends Monster implements Specialist {
     /**
      * コマンドを実行
      *
-     * @param allies 味方パーティ
+     * @param allies  味方パーティ
      * @param enemies 敵パーティ
      */
     protected void command(AbstractParty allies,

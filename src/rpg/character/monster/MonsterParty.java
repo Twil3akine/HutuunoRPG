@@ -19,7 +19,7 @@ public class MonsterParty extends AbstractParty {
      * @return 全員が逃げている場合は true, そうでない場合は false
      */
     protected boolean isAllEscape() {
-        for (AbstractCharacter monster: this.getMembers()) {
+        for (AbstractCharacter monster : this.getMembers()) {
             if (!monster.isEscaped()) {
                 return false;
             }

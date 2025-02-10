@@ -17,7 +17,9 @@ public abstract class Dungeon extends Area {
     protected int encounterCount;
 
     //Constructor
-    public Dungeon() {}
+    public Dungeon() {
+    }
+
     public Dungeon(int encounterCount) {
         this.encounterCount = encounterCount + 1;
     }
@@ -74,9 +76,9 @@ public abstract class Dungeon extends Area {
         print("探索中... (" + this.encounterCount + "回目)");
 
         String result = (this.encounterCount >= 3)
-            ? ((int)(Math.random() * 10) <= 2)
+                ? ((int) (Math.random() * 10) <= 2)
                 ? this.encounterBoss(party) : this.encounterMob(party)
-            : this.encounterMob(party);
+                : this.encounterMob(party);
 
         this.encounterCount = switch (result) {
             case "VICTORY" -> 1;
@@ -100,13 +102,13 @@ public abstract class Dungeon extends Area {
         int numberOfMonsters = random.nextInt(3) + 1;
 
         Monster[] monsters = new Monster[numberOfMonsters];
-        for (int i=0; i<numberOfMonsters; i++) {
+        for (int i = 0; i < numberOfMonsters; i++) {
             monsters[i] = switch (this.floorNumber) {
-                case 1 -> new BabyDragon(i+1);
-                case 2 -> new Damon(i+1);
-                case 3 -> new Matango(i+1);
-                case 4 -> new Slime(i+1);
-                case 5 -> new ImperialGuard(i+1);
+                case 1 -> new BabyDragon(i + 1);
+                case 2 -> new Damon(i + 1);
+                case 3 -> new Matango(i + 1);
+                case 4 -> new Slime(i + 1);
+                case 5 -> new ImperialGuard(i + 1);
                 default -> null;
             };
         }

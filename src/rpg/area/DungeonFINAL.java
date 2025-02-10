@@ -15,7 +15,7 @@ public class DungeonFINAL extends Dungeon {
         super();
         this.name = "王の間";
         this.floorNumber = 5;
-        this.encounterCount = encounterCount+1;
+        this.encounterCount = encounterCount + 1;
     }
 
     /**
@@ -24,15 +24,17 @@ public class DungeonFINAL extends Dungeon {
      * @return Monster
      */
     @Override
-    protected Monster nextBoss() { return new King(); }
+    protected Monster nextBoss() {
+        return new King();
+    }
 
     @Override
     protected Area nextArea(String result) {
         return switch (result) {
-                case "VICTORY" -> new DungeonCLEAR();
-                case "WIN" -> new DungeonFINAL(this.encounterCount-1);
-                case "ESCAPE" -> new DungeonFINAL(this.encounterCount);
-                default -> null;
+            case "VICTORY" -> new DungeonCLEAR();
+            case "WIN" -> new DungeonFINAL(this.encounterCount - 1);
+            case "ESCAPE" -> new DungeonFINAL(this.encounterCount);
+            default -> null;
         };
     }
 }

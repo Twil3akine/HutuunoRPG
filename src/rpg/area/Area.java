@@ -9,7 +9,8 @@ public abstract class Area {
     protected String name;
 
     // Constructor
-    public Area() {}
+    public Area() {
+    }
 
     /**
      * エリアにアクセスする
@@ -31,12 +32,16 @@ public abstract class Area {
      *
      * @return String エリアの名前
      */
-    public String getName() { return this.name; }
+    public String getName() {
+        return this.name;
+    }
 
     /**
      * エリアの名前を設定
      *
      * @param name エリアの名前
      */
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) {
+        this.name = name;
+    }
 }

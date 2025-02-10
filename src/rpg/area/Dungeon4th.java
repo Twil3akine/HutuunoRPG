@@ -15,7 +15,7 @@ public class Dungeon4th extends Dungeon {
         super();
         this.name = "スライムの湖沼";
         this.floorNumber = 4;
-        this.encounterCount = encounterCount+1;
+        this.encounterCount = encounterCount + 1;
     }
 
     /**
@@ -24,15 +24,17 @@ public class Dungeon4th extends Dungeon {
      * @return Monster
      */
     @Override
-    protected Monster nextBoss() { return new SlimeSwamp(); }
+    protected Monster nextBoss() {
+        return new SlimeSwamp();
+    }
 
     @Override
     protected Area nextArea(String result) {
         return switch (result) {
-                case "VICTORY" -> new DungeonFINAL();
-                case "WIN" -> new Dungeon4th(this.encounterCount-1);
-                case "ESCAPE" -> new Dungeon4th(this.encounterCount);
-                default -> null;
+            case "VICTORY" -> new DungeonFINAL();
+            case "WIN" -> new Dungeon4th(this.encounterCount - 1);
+            case "ESCAPE" -> new Dungeon4th(this.encounterCount);
+            default -> null;
         };
     }
 }

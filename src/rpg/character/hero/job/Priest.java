@@ -28,7 +28,7 @@ public class Priest extends AbstractSuperHero {
      */
     public boolean special(AbstractParty targets) {
         print(this.getName() + "のヒール！\n味方全体のHPを回復した！");
-        for (AbstractCharacter target: targets.getMembers()) {
+        for (AbstractCharacter target : targets.getMembers()) {
             if (target.isDead() || target.isEscaped()) continue;
 
             int randomHeal = new Random().nextInt(20) + 10;
