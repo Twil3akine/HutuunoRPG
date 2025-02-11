@@ -13,9 +13,11 @@ public class Main {
     public static void main(String[] args) {
         // 勇者パーティ作成
         Hero[] heroes = {
-                new Sorcerer("魔法に優れた人"),
-                new Priest("神に魂をささげた人"),
-                new Warrior("脳まで筋肉")
+                new Sorcerer("魔法に優れた人1"),
+                new Sorcerer("魔法に優れた人2"),
+                new Sorcerer("魔法に優れた人3"),
+                new Warrior("脳まで筋肉1"),
+                new Priest("魂を神にささげた人1"),
         };
         HeroParty party = new HeroParty(heroes);
 

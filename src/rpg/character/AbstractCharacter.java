@@ -222,7 +222,7 @@ public abstract class AbstractCharacter {
                     break;
 
                 case POISON:
-                    int poisonDamage = new Random().nextInt(this.hp - 1) + 1;
+                    int poisonDamage = new Random().nextInt(this.hp) + 1;
                     int damage = this.getDamage(poisonDamage);
                     print(this.name + "は毒で" + damage + "ダメージ受けた！\n");
                     break;

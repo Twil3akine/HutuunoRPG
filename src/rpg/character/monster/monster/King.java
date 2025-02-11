@@ -31,14 +31,15 @@ public class King extends BossMonster {
         for (AbstractCharacter target : targets.getMembers()) {
             if (target.isDead() || target.isEscaped()) continue;
 
-            int randomAttack = new Random().nextInt(attack) + (int) (attack * 1.5);
+            int randomAttack = new Random().nextInt(attack) + (int)(attack * 2);
             int damage = target.getDamage(randomAttack);
             print(target.getName() + "は" + damage + "ダメージうけた！");
             target.actionStatus();
 
             this.setState(CRASH);
-            this.actionStatus();
         }
+        this.actionStatus();
+
         return true;
     }
 }

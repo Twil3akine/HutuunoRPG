@@ -29,11 +29,13 @@ public class KingDamon extends BossMonster {
 
         int drainDamage = 0;
         int currentHp = this.getHp();
+
         for (AbstractCharacter target : targets.getMembers()) {
             if (target.isDead() || target.isEscaped()) continue;
 
             int randomAttack = new Random().nextInt(attack) + attack;
             int damage = target.getDamage(randomAttack);
+
             drainDamage += damage;
             print(target.getName() + "は" + damage + "ダメージうけた！");
             target.actionStatus();

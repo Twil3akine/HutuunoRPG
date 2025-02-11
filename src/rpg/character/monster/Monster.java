@@ -41,7 +41,7 @@ public class Monster extends AbstractCharacter {
     protected void command(AbstractParty allies,
                            AbstractParty enemies) {
         int command = new Random().nextInt(5);
-        if (Pattern.matches(".*ドラゴン.*", this.getName())) {
+        if (!Pattern.matches("王の近衛兵", this.getName())) {
             print(this.getName());
             if (command == 0) {
                 while (true) {
